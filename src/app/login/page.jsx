@@ -29,19 +29,24 @@ export default function Login() {
 
             if(response.ok){
                 const data = await response.json();
-                console.log(data);
-                setUsuario({
-                    userName: '',
-                    senha: ''
-                }); //Limpa o formulário  
-                redirect('/login');           
+                
+                if(data.status == 'ok'){
+
+                setMsg('login sucesso');
+                setTimeout(() => {
+                    setMsg('');
+                }, 5000); //Limpa o formulário
+
             }else{
+                
                 console.log('Erro de login');
                 setMsg('Erro de login');
                 setTimeout(() => {
                     setMsg('');
                 }, 5000);
+                
             }
+        }
     }
 
     return (
