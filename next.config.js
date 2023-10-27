@@ -3,15 +3,15 @@ const nextConfig = {}
 
 module.exports = {
 
-    async redirects() {
-        return [
-          {
-            source: '/login',
-            destination: '/login', 
-            permanent: true,
-          },
-        ]
-      },
+    // async redirects() {
+    //     return [
+    //       {
+    //         source: '/login',
+    //         destination: '/login', 
+    //         permanent: true,
+    //       },
+    //     ]
+    //   },
 
     images: {
         remotePatterns:[
