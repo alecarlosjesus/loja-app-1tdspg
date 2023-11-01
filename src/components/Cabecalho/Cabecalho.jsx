@@ -6,6 +6,7 @@ export default function Cabecalho() {
     <nav>
       <ul>
         <li><Link href="/">::.HOME</Link></li>
+        <li><Link href="/login">::.Login</Link></li>
         <li><Link href="/produtos/camisa">::.Camisas</Link></li>
         <li><Link href="/produtos/tenis">::.Tênis</Link></li>
         <li><Link href="/fazenda">::.Queijos</Link></li>
