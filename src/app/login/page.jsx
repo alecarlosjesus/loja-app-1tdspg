@@ -1,16 +1,31 @@
 "use client";
-import { redirect } from "next/navigation";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Login() {
+
+  const navigate = useRouter();
+
   //Este useState, representa o objeto usuário, enquanto está sendo preenchido no form e
   // em qualquer momento dentro do componente!!
   const [usuario, setUsuario] = useState({
     email: "",
-    password: "",
+    senha: "",
   });
 
   const [msg, setmsg] = useState("");
+  const [classeLoginMsg, setClasseLoginMsg] = useState("");
+
+  useEffect(() => {
+    if(msg == "Usuário Validado com Sucesso!"){
+      setClasseLoginMsg("login-sucesso");
+    }else if(msg == "Usuário e ou Senha inválidos!!"){
+      setClasseLoginMsg("login-erro");
+    }else{
+      setClasseLoginMsg("login-none");
+    }
+  }, [msg])
+  
 
   const handleChange = (e) => {
     //Destructuring dos campos que estão sendo digitados!
@@ -41,22 +56,22 @@ export default function Login() {
         if (status.status) {
             
             setmsg("Usuário Validado com Sucesso!");
+            
             setTimeout(()=>{
                 setmsg("");
+                //Redirecionando o usuário para a página HOME!
+                navigate.push("/");
             },5000);
-
-          redirect("/");
         } else {
           
             setmsg("Usuário e ou Senha inválidos!!");
             setTimeout(()=>{
                 setmsg("");
+                setUsuario({
+                  email:"",
+                  senha:""
+                });
             },5000);
-
-          setUsuario({
-            email: "",
-            password: "",
-          });
         }
       }
     } catch (error) {
@@ -67,7 +82,9 @@ export default function Login() {
   return (
     <div>
       <h1>Informações de Usuários:</h1>
-      <h2>{msg}</h2>
+
+      <h2 className={classeLoginMsg}>{msg}</h2>
+
       <div>
         <form onSubmit={handleSubmit}>
           <fieldset>
