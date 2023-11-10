@@ -18,7 +18,6 @@ export default function Cabecalho() {
     <header className='cabecalho'>
       <div>
         <p>{usuario != null ? `Olá ${usuario.email}`:""}</p>
-
       </div>
     <nav>
       <ul>
