@@ -42,6 +42,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+
     try {
       const response = await fetch(
         "http://localhost:3000/api/base/base-users/0",
@@ -92,6 +93,15 @@ export default function Login() {
       console.error(error);
     }
   };
+
+
+//Exercício
+//Estilização com SASS ou CSS-MODULE:
+//1 - Criar um arquivo de estilização para o componente Login.
+//2 - Criar uma classe para o componente Login.
+// 3 - Criar um tema para padronizar a estilização dos componentes de login e cadastro.
+// 4 - Criar uma classe para o componente Cadastro.
+
 
   return (
     <div>
