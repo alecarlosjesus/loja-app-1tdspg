@@ -33,7 +33,7 @@ export async function POST(request, response){
 
       //Validando o usúario de fato:
       if(userLista.email == userRequest.email && userLista.senha == userRequest.senha){
-        return NextResponse.json({"status":true});      
+        return NextResponse.json({"status":true,"user":userLista});      
       }
     }
   } catch (error) {
